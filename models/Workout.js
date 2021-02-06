@@ -33,6 +33,7 @@ const WorkoutSchema = new Schema({
   },
 });
 
+// Calling mongoose.model() on a schema causes mongoose to COMPILE a model for us
 const Workout = mongoose.model("Workout", WorkoutSchema);
 
 module.exports = Workout;
