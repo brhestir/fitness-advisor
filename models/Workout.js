@@ -1,36 +1,14 @@
+// Workout.js
+
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+// Mongoose - arrays of subdocuments
+// The Workout schema contains an array of Exercise schema.
 const WorkoutSchema = new Schema({
-  // type: "resistance",
-  // name: "Quad Press",
-  // duration: 30,
-  // weight: 300,
-  // reps: 10,
-  // sets: 4
-  type: {
-    type: String,
-    trim: true,
-    required: "String is Required"
-  },
-  name: {
-    type: String,
-    trim: true,
-    required: "String is required",
-  },
-  duration: {
-    type: Number,
-  },
-  weight: {
-    type: Number,
-  },
-  reps: {
-    type: Number,
-  },
-  sets: {
-    type: Number,
-  },
+  day: { type: Date },
+  exercises: [ExerciseSchema],
 });
 
 // Calling mongoose.model() on a schema causes mongoose to COMPILE a model for us
