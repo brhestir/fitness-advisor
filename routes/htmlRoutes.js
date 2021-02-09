@@ -25,19 +25,19 @@ router.get("/", (req, res) => {
 });
 
 
-router.get("/", (req, res) => { sendFileHandler(req, res); } );
+// router.get("/", (req, res) => { sendFileHandler(req, res); } );
 
 
 
-function sendFileHandler(response) { 
-	res.sendFile("/index.html", (err, respon) => {
-		if (err) {
-			res.status(400).json(err);
-			throw err;
-		}	else { 
-			res.end();
-		}
-	});
-});
+// function sendFileHandler(response) { 
+// 	res.sendFile("/index.html", (err, respon) => {
+// 		if (err) {
+// 			res.status(400).json(err);
+// 			throw err;
+// 		}	else { 
+// 			res.end();
+// 		}
+// 	});
+// });
 
-module.exports = router;
+module.exports = htmlRouter;

@@ -2,11 +2,11 @@ const router = require("express").Router();
 
 
 
-router.post("/api/workouts", (req, res) => {
+router.post("./api/workouts", (req, res) => {
 	
 	console.log(`[i] /api/workouts ${req.body}`);
 
-	res.sendFile("/exercise.html", (err) => {
+	res.sendFile("./exercise.html", (err) => {
 		if(err) {
 			console.log(`[E] /api/workouts err: ${err}`);
 			res.status(400).json({result: "Server error"});
@@ -19,4 +19,4 @@ router.post("/api/workouts", (req, res) => {
 
 });
 
-module.exports = router;
+module.exports = apiRouter;
