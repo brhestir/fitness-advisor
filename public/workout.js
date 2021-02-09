@@ -1,7 +1,7 @@
 // workout.js
 
 async function initWorkout () {
-	const lastWorkout = await API.getLastWorkout();
+	const lastWorkout = await getLastWorkout();
 	console.log("Last workout:", lastWorkout);
 	if (lastWorkout) {
 		document
@@ -81,6 +81,18 @@ function renderNoWorkoutText () {
 
 	p.appendChild(strong);
 	container.appendChild(p);
+}
+
+async function getLastWorkout() {
+	let res;
+	try {
+		res = await fetch("/api/workouts");
+	} catch (err) {
+		console.log(err);
+	}
+	const json = await res.json();
+
+	return json[json.length - 1];
 }
 
 initWorkout();
