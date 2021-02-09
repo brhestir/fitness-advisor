@@ -1,7 +1,8 @@
+"use strict";
+// Exercise.js
+
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
-
 const ExerciseSchema = new Schema({
 	// type: "resistance",
 	// name: "Quad Press",
@@ -34,6 +35,6 @@ const ExerciseSchema = new Schema({
 });
 
 // Calling mongoose.model() on a schema causes mongoose to COMPILE a model for us
-const Exercise = mongoose.model("Exercise", ExerciseSchema);
+let Exercise = mongoose.model("Exercise", ExerciseSchema);
 
 module.exports = Exercise;

@@ -20,13 +20,7 @@ app.use(morgan("dev", {
 app.use(express.urlencoded({ extended: true }));	// URL param parsing middleware?
 app.use(express.json());													// JSON parsing middleware?
 app.use(express.static(__dirname + "/public"));								// serve static files from "/"
-// app.use(express.static(__dirname + "/routes"));								// serve client-required .js files
-
 app.use("/", appRouter);							// Add routes to express
-
-
-
-
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 	useNewUrlParser: true,
@@ -38,14 +32,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 const db = mongoose.connection;
 
 db.on("error", 			(err) => { console.log(`Mongoose connection error: ${err}`) });
-
-
 db.on("connected", function(){
 	console.log("Mongoose successfully connected");
 	app.listen(PORT, () => {
 		console.log(`App running on port ${PORT}`);
 	});
 });
-
-
 
