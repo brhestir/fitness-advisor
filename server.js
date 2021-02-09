@@ -19,7 +19,8 @@ app.use(morgan("dev", {
 
 app.use(express.urlencoded({ extended: true }));	// URL param parsing middleware?
 app.use(express.json());													// JSON parsing middleware?
-app.use(express.static(__dirname + "/public"));								// serve static files from "/"
+app.use(express.static(__dirname + "/public"));    // serve static files from "/"
+
 app.use("/", appRouter);							// Add routes to express
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
