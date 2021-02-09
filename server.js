@@ -1,48 +1,49 @@
 // server.js
-// const express = require("express");
-// const logger = require("morgan");
-const mongoose = require("mongoose");
-// const { response } = require("express");
+const mongoose = require("mongoose");					// Mongoose-ODM for MongoDB
+const express = require("express");						// Express.js
+const morgan = require("morgan"); 						// Express.js logging middleware
 
-// const PORT = process.env.PORT || 3000;
+const app = express();												// Express.js instantiation
+app.use(morgan( {
+	format: "dev",
+	skip: function(req, res) {
+		// if res.statusCode === 304
+		// i.e. "Not Modified" then skip() returns true
+		return res.statusCode === 304;
+	}
+}));
+app.use(express.urlencoded({ extended: true }));	// URL param parsing middleware?
+app.use(express.json());													// JSON parsing middleware?
+app.use(express.static("public"));								// serve static files from "/"
+app.use(express.static("routes", "/api.js"));							// server-side API routes
 
-// Require models
 
-// create express instance
-// const app = express();
 
-// app.use(logger("dev"));
-// app.use(express.json());
-
-// app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useCreateIndex: true,
+	useFindAndModify: false,
 });
 
-const connection = mongoose.connection;
+const db = mongoose.connection;
 
-connection.on("connected", () => {
-  console.log("Mongoose successfully connected");
+db.on("error", 			(err) => { console.log(`Mongoose connection error: ${err}`); });
+db.on("connected", 	() 		=> {
+	console.log("Mongoose successfully connected");
+	
+	
+	
+	
+	app.listen(PORT, () => {
+		console.log(`App running on port ${PORT}`);
+	});
+	
+
+	
+
 });
 
-connection.on("error", (err) => {
-  console.log(`Mongoose connection error: ${err}`);
-});
 
-// app.post("/arbitraryRoute", ({body}, res) => {
-//     ModelName.create(body)
-//     .then(dbModelName => {
-//         res.json(dbModelName);
-//     })
-//     .catch(err => {
-//         res.json(err);
-//     });
-// });
 
-// app.listen(PORT, () => {
-//     console.log(`App running on port ${PORT}`);
-// });
