@@ -66,7 +66,7 @@ const workoutSeed = [
 		exercises: [
 			{
 				type: "resistance",
-				name: "Bench Press",
+				name: "Inclined Barbell Press",
 				duration: 20,
 				weight: 285,
 				reps: 10,
@@ -88,7 +88,7 @@ const workoutSeed = [
 		]
 	},
 	{
-		day: new Date(new Date().setDate(new Date().getDate() - 4)),
+		day: new Date().setDate(new Date().getDate() - 4),
 		exercises: [
 			{
 				type: "resistance",
@@ -101,11 +101,11 @@ const workoutSeed = [
 		]
 	},
 	{
-		day: new Date(new Date().setDate(new Date().getDate() - 3)),
+		day: new Date().setDate(new Date().getDate() - 3),
 		exercises: [
 			{
 				type: "resistance",
-				name: "Bench Press",
+				name: "Upright Rows",
 				duration: 20,
 				weight: 300,
 				reps: 10,
@@ -114,7 +114,26 @@ const workoutSeed = [
 		]
 	},
 	{
-		day: new Date(new Date().setDate(new Date().getDate() - 2)),
+		day: new Date().setDate(new Date().getDate() - 2),
+		exercises: [
+			{
+				type: "resistance",
+				name: "Incline Press",
+				duration: 20,
+				weight: 300,
+				reps: 10,
+				sets: 4
+			},
+			{
+				type: "cardio",
+				name: "Running",
+				duration: 25,
+				distance: 4
+			}
+		]
+	},
+	{
+		day: new Date().setDate(new Date().getDate() - 1),
 		exercises: [
 			{
 				type: "resistance",
@@ -123,6 +142,31 @@ const workoutSeed = [
 				weight: 300,
 				reps: 10,
 				sets: 4
+			},
+			{
+				type: "cardio",
+				name: "Running",
+				duration: 25,
+				distance: 4
+			}
+		]
+	},
+	{
+		day: new Date().setDate(new Date().getDate() - 0),
+		exercises: [
+			{
+				type: "resistance",
+				name: "Not-so-Military Press",
+				duration: 20,
+				weight: 300,
+				reps: 10,
+				sets: 4
+			},
+			{
+				type: "cardio",
+				name: "Running",
+				duration: 25,
+				distance: 4
 			}
 		]
 	}
